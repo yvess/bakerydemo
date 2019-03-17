@@ -39,7 +39,7 @@ INSTALLED_APPS = [
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
+#    'wagtail.contrib.redirects',
     'wagtail.embeds',
     'wagtail.users',
     'wagtail.snippets',
@@ -79,8 +79,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
 
     'wagtail.core.middleware.SiteMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-
+#    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'bakerydemo.urls'
