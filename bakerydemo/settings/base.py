@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'taggit',
     'wagtailfontawesome',
     'wagtail_i18n',
+    'wagtail_i18n.plugins.sites',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -179,3 +180,5 @@ WAGTAILSEARCH_BACKENDS = {
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = "bakerydemo"
+
+WAGTAIL_SITE_MODEL = 'wagtail_i18n_sites.Site'
