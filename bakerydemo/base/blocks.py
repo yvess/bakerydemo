@@ -14,6 +14,11 @@ class ImageBlock(StructBlock):
     caption = CharBlock(required=False)
     attribution = CharBlock(required=False)
 
+    translated_fields = [
+        'caption',
+        'attribution',
+    ]
+
     class Meta:
         icon = 'image'
         template = "blocks/image_block.html"
@@ -31,6 +36,10 @@ class HeadingBlock(StructBlock):
         ('h4', 'H4')
     ], blank=True, required=False)
 
+    translated_fields = [
+        'heading_text',
+    ]
+
     class Meta:
         icon = "title"
         template = "blocks/heading_block.html"
@@ -43,6 +52,11 @@ class BlockQuote(StructBlock):
     text = TextBlock()
     attribute_name = CharBlock(
         blank=True, required=False, label='e.g. Mary Berry')
+
+    translated_fields = [
+        'text',
+        'attribute_name',
+    ]
 
     class Meta:
         icon = "fa-quote-left"

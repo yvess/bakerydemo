@@ -66,6 +66,10 @@ class People(index.Indexed, TranslatableMixin, ClusterableModel):
         index.SearchField('last_name'),
     ]
 
+    translatable_fields = [
+        'job_title',
+    ]
+
     @property
     def thumb_image(self):
         # Returns an empty string if there is no profile pic or the rendition
@@ -95,6 +99,10 @@ class FooterText(TranslatableMixin, models.Model):
 
     panels = [
         FieldPanel('body'),
+    ]
+
+    translatable_fields = [
+        'body',
     ]
 
     def __str__(self):
@@ -129,6 +137,15 @@ class StandardPage(TranslatablePageMixin, Page):
         FieldPanel('introduction', classname="full"),
         StreamFieldPanel('body'),
         ImageChooserPanel('image'),
+    ]
+
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'introduction',
+        'body',
     ]
 
 
@@ -284,6 +301,21 @@ class HomePage(TranslatablePageMixin, Page):
         ], heading="Featured homepage sections", classname="collapsible")
     ]
 
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'hero_text',
+        'hero_cta',
+        'body',
+        'promo_title',
+        'promo_text',
+        'featured_section_1_title',
+        'featured_section_2_title',
+        'featured_section_3_title',
+    ]
+
     def __str__(self):
         return self.title
 
@@ -331,6 +363,15 @@ class GalleryPage(TranslatablePageMixin, Page):
     # array no subpage can be added
     subpage_types = []
 
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'introduction',
+        'body',
+    ]
+
 
 class FormField(TranslatableMixin, AbstractFormField):
     """
@@ -342,6 +383,8 @@ class FormField(TranslatableMixin, AbstractFormField):
     http://docs.wagtail.io/en/latest/reference/contrib/forms/index.html
     """
     page = ParentalKey('FormPage', related_name='form_fields', on_delete=models.CASCADE)
+
+    translatable_fields = ['label', 'help_text']
 
 
 class FormPage(TranslatablePageMixin, AbstractEmailForm):
@@ -369,4 +412,14 @@ class FormPage(TranslatablePageMixin, AbstractEmailForm):
             ]),
             FieldPanel('subject'),
         ], "Email"),
+    ]
+
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'body',
+        'thank_you_text',
+        'form_fields',
     ]

@@ -39,6 +39,10 @@ class BlogPeopleRelationship(Orderable, TranslatableMixin, models.Model):
         SnippetChooserPanel('people')
     ]
 
+    translatable_fields = [
+        'people',
+    ]
+
 
 class BlogPageTag(TaggedItemBase):
     """
@@ -91,6 +95,16 @@ class BlogPage(TranslatablePageMixin, Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
+    ]
+
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'subtitle',
+        'introduction',
+        'body',
     ]
 
     def authors(self):
@@ -155,6 +169,14 @@ class BlogIndexPage(RoutablePageMixin, TranslatablePageMixin, Page):
     content_panels = Page.content_panels + [
         FieldPanel('introduction', classname="full"),
         ImageChooserPanel('image'),
+    ]
+
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'introduction',
     ]
 
     # Speficies that only BlogPage objects can live under this index page

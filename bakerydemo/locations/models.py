@@ -103,6 +103,14 @@ class LocationsIndexPage(TranslatablePageMixin, Page):
     # Only LocationPage objects can be added underneath this index page
     subpage_types = ['LocationPage']
 
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'introduction',
+    ]
+
     # Allows children of this indexpage to be accessible via the indexpage
     # object on templates. We use this on the homepage to show featured
     # sections of the site and their child pages
@@ -172,6 +180,15 @@ class LocationPage(TranslatablePageMixin, Page):
         FieldPanel('address', classname="full"),
         FieldPanel('lat_long'),
         InlinePanel('hours_of_operation', label="Hours of Operation"),
+    ]
+
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'introduction',
+        'body',
     ]
 
     def __str__(self):

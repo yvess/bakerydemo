@@ -31,6 +31,10 @@ class Country(TranslatableMixin, models.Model):
 
     title = models.CharField(max_length=100)
 
+    translatable_fields = [
+        'title',
+    ]
+
     def __str__(self):
         return self.title
 
@@ -51,6 +55,10 @@ class BreadIngredient(TranslatableMixin, models.Model):
 
     panels = [
         FieldPanel('name'),
+    ]
+
+    translatable_fields = [
+        'name',
     ]
 
     def __str__(self):
@@ -75,6 +83,10 @@ class BreadType(TranslatableMixin, models.Model):
 
     panels = [
         FieldPanel('title'),
+    ]
+
+    translatable_fields = [
+        'title',
     ]
 
     def __str__(self):
@@ -147,6 +159,18 @@ class BreadPage(TranslatablePageMixin, Page):
 
     parent_page_types = ['BreadsIndexPage']
 
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'introduction',
+        'body',
+        'origin',
+        'bread_type',
+        'ingredients',
+    ]
+
 
 class BreadsIndexPage(TranslatablePageMixin, Page):
     """
@@ -177,6 +201,14 @@ class BreadsIndexPage(TranslatablePageMixin, Page):
 
     # Can only have BreadPage children
     subpage_types = ['BreadPage']
+
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'introduction',
+    ]
 
     # Returns a queryset of BreadPage objects that are live, that are direct
     # descendants of this index page with most recent first

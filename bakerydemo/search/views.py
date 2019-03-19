@@ -18,7 +18,7 @@ def search(request):
             # In production, use ElasticSearch and a simplified search query, per
             # http://docs.wagtail.io/en/v1.12.1/topics/search/backends.html
             # like this:
-            search_results = Page.objects.live().search(search_query)
+            search_results = Page.objects.live().descendant_of(request.site.root_page).search(search_query)
         else:
             # If we aren't using ElasticSearch for the demo, fall back to native db search.
             # But native DB search can't search specific fields in our models on a `Page` query.
@@ -33,7 +33,7 @@ def search(request):
             location_result_ids = [p.page_ptr.id for p in location_results]
 
             page_ids = blog_page_ids + bread_page_ids + location_result_ids
-            search_results = Page.objects.live().filter(id__in=page_ids)
+            search_results = Page.objects.live().descendant_of(request.site.root_page).filter(id__in=page_ids)
 
         query = Query.get(search_query)
 
