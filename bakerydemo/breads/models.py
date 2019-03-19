@@ -12,13 +12,13 @@ from wagtail.core.models import Page
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail_i18n.models import Translatable
+from wagtail_i18n.models import TranslatableMixin, TranslatablePageMixin
 
 from bakerydemo.base.blocks import BaseStreamBlock
 
 
 @register_snippet
-class Country(Translatable, models.Model):
+class Country(TranslatableMixin, models.Model):
     """
     A Django model to store set of countries of origin.
     It uses the `@register_snippet` decorator to allow it to be accessible
@@ -39,7 +39,7 @@ class Country(Translatable, models.Model):
 
 
 @register_snippet
-class BreadIngredient(Translatable, models.Model):
+class BreadIngredient(TranslatableMixin, models.Model):
     """
     Standard Django model that is displayed as a snippet within the admin due
     to the `@register_snippet` decorator. We use a new piece of functionality
@@ -61,7 +61,7 @@ class BreadIngredient(Translatable, models.Model):
 
 
 @register_snippet
-class BreadType(Translatable, models.Model):
+class BreadType(TranslatableMixin, models.Model):
     """
     A Django model to define the bread type
     It uses the `@register_snippet` decorator to allow it to be accessible
@@ -84,7 +84,7 @@ class BreadType(Translatable, models.Model):
         verbose_name_plural = "Bread types"
 
 
-class BreadPage(Translatable, Page):
+class BreadPage(TranslatablePageMixin, Page):
     """
     Detail view for a specific bread
     """
@@ -148,7 +148,7 @@ class BreadPage(Translatable, Page):
     parent_page_types = ['BreadsIndexPage']
 
 
-class BreadsIndexPage(Translatable, Page):
+class BreadsIndexPage(TranslatablePageMixin, Page):
     """
     Index page for breads.
 

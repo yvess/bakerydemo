@@ -19,13 +19,13 @@ from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
-from wagtail_i18n.models import Translatable
+from wagtail_i18n.models import TranslatableMixin, TranslatablePageMixin
 
 from .blocks import BaseStreamBlock
 
 
 @register_snippet
-class People(index.Indexed, Translatable, ClusterableModel):
+class People(index.Indexed, TranslatableMixin, ClusterableModel):
     """
     A Django model to store People objects.
     It uses the `@register_snippet` decorator to allow it to be accessible
@@ -84,7 +84,7 @@ class People(index.Indexed, Translatable, ClusterableModel):
 
 
 @register_snippet
-class FooterText(Translatable, models.Model):
+class FooterText(TranslatableMixin, models.Model):
     """
     This provides editable text for the site footer. Again it uses the decorator
     `register_snippet` to allow it to be accessible via the admin. It is made
@@ -104,7 +104,7 @@ class FooterText(Translatable, models.Model):
         verbose_name_plural = 'Footer Text'
 
 
-class StandardPage(Translatable, Page):
+class StandardPage(TranslatablePageMixin, Page):
     """
     A generic content page. On this demo site we use it for an about page but
     it could be used for any type of page content that only needs a title,
@@ -132,7 +132,7 @@ class StandardPage(Translatable, Page):
     ]
 
 
-class HomePage(Translatable, Page):
+class HomePage(TranslatablePageMixin, Page):
     """
     The Home Page. This looks slightly more complicated than it is. You can
     see if you visit your site and edit the homepage that it is split between
@@ -288,7 +288,7 @@ class HomePage(Translatable, Page):
         return self.title
 
 
-class GalleryPage(Translatable, Page):
+class GalleryPage(TranslatablePageMixin, Page):
     """
     This is a page to list locations from the selected Collection. We use a Q
     object to list any Collection created (/admin/collections/) even if they
@@ -332,7 +332,7 @@ class GalleryPage(Translatable, Page):
     subpage_types = []
 
 
-class FormField(Translatable, AbstractFormField):
+class FormField(TranslatableMixin, AbstractFormField):
     """
     Wagtailforms is a module to introduce simple forms on a Wagtail site. It
     isn't intended as a replacement to Django's form support but as a quick way
@@ -344,7 +344,7 @@ class FormField(Translatable, AbstractFormField):
     page = ParentalKey('FormPage', related_name='form_fields', on_delete=models.CASCADE)
 
 
-class FormPage(Translatable, AbstractEmailForm):
+class FormPage(TranslatablePageMixin, AbstractEmailForm):
     image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,

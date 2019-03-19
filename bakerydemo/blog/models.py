@@ -16,12 +16,12 @@ from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
-from wagtail_i18n.models import Translatable
+from wagtail_i18n.models import TranslatableMixin, TranslatablePageMixin
 
 from bakerydemo.base.blocks import BaseStreamBlock
 
 
-class BlogPeopleRelationship(Orderable, Translatable, models.Model):
+class BlogPeopleRelationship(Orderable, TranslatableMixin, models.Model):
     """
     This defines the relationship between the `People` within the `base`
     app and the BlogPage below. This allows People to be added to a BlogPage.
@@ -49,7 +49,7 @@ class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey('BlogPage', related_name='tagged_items', on_delete=models.CASCADE)
 
 
-class BlogPage(Translatable, Page):
+class BlogPage(TranslatablePageMixin, Page):
     """
     A Blog Page
 
@@ -131,7 +131,7 @@ class BlogPage(Translatable, Page):
     subpage_types = []
 
 
-class BlogIndexPage(RoutablePageMixin, Translatable, Page):
+class BlogIndexPage(RoutablePageMixin, TranslatablePageMixin, Page):
     """
     Index page for blogs.
     We need to alter the page model's context to return the child page objects,
