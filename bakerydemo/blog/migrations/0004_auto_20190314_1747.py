@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='blogindexpage',
             name='language',
-            field=models.ForeignKey(default=wagtail_i18n.models.Language.default, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Language'),
+            field=models.ForeignKey(default=wagtail_i18n.models.Language.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Language'),
         ),
         migrations.AddField(
             model_name='blogindexpage',
@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='blogpage',
             name='language',
-            field=models.ForeignKey(default=wagtail_i18n.models.Language.default, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Language'),
+            field=models.ForeignKey(default=wagtail_i18n.models.Language.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Language'),
         ),
         migrations.AddField(
             model_name='blogpage',
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='blogpeoplerelationship',
             name='language',
-            field=models.ForeignKey(default=wagtail_i18n.models.Language.default, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Language'),
+            field=models.ForeignKey(default=wagtail_i18n.models.Language.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Language'),
         ),
         migrations.AddField(
             model_name='blogpeoplerelationship',
