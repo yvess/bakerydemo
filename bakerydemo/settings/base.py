@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'wagtailfontawesome',
     'wagtail_i18n',
     'wagtail_i18n.plugins.sites',
+    'wagtail_i18n.plugins.regions_admin',
 
     'django.contrib.admin',
     'django.contrib.auth',
