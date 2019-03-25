@@ -181,3 +181,8 @@ WAGTAILSEARCH_BACKENDS = {
 WAGTAIL_SITE_NAME = "bakerydemo"
 
 WAGTAIL_SITE_MODEL = 'wagtail_i18n_sites.Site'
+
+LANGUAGES = [
+    ('en', "English"),
+    ('fr', "French"),
+]
