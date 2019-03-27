@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'bakerydemo.locations',
     'bakerydemo.search',
 
+    'wagtail_i18n.plugins.language_switch',
+
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
 #    'wagtail.contrib.redirects',
@@ -59,6 +61,7 @@ INSTALLED_APPS = [
     'wagtail_i18n',
     'wagtail_i18n.plugins.sites',
     'wagtail_i18n.plugins.regions_admin',
+    'wagtail_i18n.plugins.workflow',
 
     'django.contrib.admin',
     'django.contrib.auth',
