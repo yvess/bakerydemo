@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'wagtail_i18n.plugins.sites',
     'wagtail_i18n.plugins.regions_admin',
     'wagtail_i18n.plugins.workflow',
-    'wagtail_i18n.plugins.segmentizer',
+    'wagtail_i18n.plugins.translation_memory',
 
     'django.contrib.admin',
     'django.contrib.auth',
