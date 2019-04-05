@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='footertext',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='footertext',
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='formfield',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='formfield',
@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='formpage',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='formpage',
@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='gallerypage',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='gallerypage',
@@ -60,7 +60,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='homepage',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='homepage',
@@ -70,7 +70,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='people',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='people',
@@ -80,7 +80,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='standardpage',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='standardpage',

@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='breadingredient',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='breadingredient',
@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='breadpage',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='breadpage',
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='breadsindexpage',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='breadsindexpage',
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='breadtype',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='breadtype',
@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='country',
             name='locale',
-            field=models.ForeignKey(default=wagtail_i18n.models.Locale.default_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_i18n.Locale'),
         ),
         migrations.AddField(
             model_name='country',
