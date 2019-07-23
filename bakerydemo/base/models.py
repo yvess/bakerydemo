@@ -19,7 +19,7 @@ from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
-from wagtail_i18n.models import TranslatableMixin, TranslatablePageMixin
+from wagtail_localize.models import TranslatableMixin, TranslatablePageMixin
 
 from .blocks import BaseStreamBlock
 

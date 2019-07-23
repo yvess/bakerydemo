@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'bakerydemo.locations',
     'bakerydemo.search',
 
-    'wagtail_i18n.plugins.language_switch',
+    'wagtail_localize.plugins.language_switch',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
@@ -58,11 +58,11 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'wagtailfontawesome',
-    'wagtail_i18n',
-    'wagtail_i18n.plugins.sites',
-    'wagtail_i18n.plugins.regions_admin',
-    'wagtail_i18n.plugins.workflow',
-    'wagtail_i18n.plugins.translation_memory',
+    'wagtail_localize',
+    'wagtail_localize.plugins.sites',
+    'wagtail_localize.plugins.regions_admin',
+    'wagtail_localize.plugins.workflow',
+    'wagtail_localize.plugins.translation_memory',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -184,7 +184,7 @@ WAGTAILSEARCH_BACKENDS = {
 # Wagtail settings
 WAGTAIL_SITE_NAME = "bakerydemo"
 
-WAGTAIL_SITE_MODEL = 'wagtail_i18n_sites.Site'
+WAGTAIL_SITE_MODEL = 'wagtail_localize_sites.Site'
 
 LANGUAGES = [
     ('en', "English"),

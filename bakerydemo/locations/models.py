@@ -11,7 +11,7 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPane
 from wagtail.core.models import Orderable, Page
 from wagtail.search import index
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail_i18n.models import TranslatablePageMixin
+from wagtail_localize.models import TranslatablePageMixin
 
 from bakerydemo.base.blocks import BaseStreamBlock
 from bakerydemo.locations.choices import DAY_CHOICES

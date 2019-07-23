@@ -16,7 +16,7 @@ from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
-from wagtail_i18n.models import TranslatableMixin, TranslatablePageMixin
+from wagtail_localize.models import TranslatableMixin, TranslatablePageMixin
 
 from bakerydemo.base.blocks import BaseStreamBlock
 
