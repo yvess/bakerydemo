@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'bakerydemo.locations',
     'bakerydemo.search',
 
-    'wagtail_localize.plugins.language_switch',
+    'wagtail_localize.admin.language_switch',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
@@ -59,10 +59,11 @@ INSTALLED_APPS = [
     'taggit',
     'wagtailfontawesome',
     'wagtail_localize',
-    'wagtail_localize.plugins.sites',
-    'wagtail_localize.plugins.regions_admin',
-    'wagtail_localize.plugins.workflow',
-    'wagtail_localize.plugins.translation_memory',
+    'wagtail_localize.experimental.sites',
+    'wagtail_localize.admin.regions',
+    'wagtail_localize.admin.workflow',
+    'wagtail_localize.translation_memory',
+    'wagtail_localize.translation_engines.google_translate',
 
     'django.contrib.admin',
     'django.contrib.auth',
