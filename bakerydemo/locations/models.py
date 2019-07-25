@@ -12,6 +12,7 @@ from wagtail.core.models import Orderable, Page
 from wagtail.search import index
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail_localize.models import TranslatablePageMixin
+from wagtail_localize.admin.regions.components import register_region_component
 
 from bakerydemo.base.blocks import BaseStreamBlock
 from bakerydemo.locations.choices import DAY_CHOICES
@@ -225,3 +226,9 @@ class LocationPage(TranslatablePageMixin, Page):
 
     # Can only be placed under a LocationsIndexPage object
     parent_page_types = ['LocationsIndexPage']
+
+
+@register_region_component
+class RegionFlag(models.Model):
+    region = models.OneToOneField('wagtail_localize.Region', on_delete=models.CASCADE, related_name='flag')
+    flag_image = models.ForeignKey('wagtailimages.Image', on_delete=models.CASCADE, related_name='+')
