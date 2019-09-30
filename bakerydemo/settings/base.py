@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'wagtail.api.v2',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.routable_page',
+    'wagtail.sites',
     'wagtail.core',
 
     'rest_framework',
@@ -59,7 +60,6 @@ INSTALLED_APPS = [
     'taggit',
     'wagtailfontawesome',
     'wagtail_localize',
-    'wagtail_localize.experimental.sites',
     'wagtail_localize.admin.regions',
     'wagtail_localize.admin.workflow',
     'wagtail_localize.translation_memory',
