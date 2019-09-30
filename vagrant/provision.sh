@@ -47,9 +47,10 @@ DATABASES = {
 EOF
 fi
 
-# Run syncdb/migrate/load_initial_data/update_index
+# Run syncdb/migrate/load_initial_data/sync_languages/update_index
 su - $DEV_USER -c "$PYTHON $PROJECT_DIR/manage.py migrate --noinput && \
                    $PYTHON $PROJECT_DIR/manage.py load_initial_data && \
+                   $PYTHON $PROJECT_DIR/manage.py sync_languages && \
                    $PYTHON $PROJECT_DIR/manage.py update_index"
 
 
