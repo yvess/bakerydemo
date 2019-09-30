@@ -3,4 +3,7 @@ django-dotenv==1.4.1
 https://releases.wagtail.io/nightly/dist/wagtail-2.7.dev20190723-py3-none-any.whl
 wagtailfontawesome>=1.1.3,<1.2
 Pillow==4.0.0
+
+# Localisation
+googletrans==2.4.0
 -e git://github.com/kaedroho/wagtail-localize.git@1d1febce9e4f9fb896cd013897320dcf4430b3d4#egg=wagtail-localize
