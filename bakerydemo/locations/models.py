@@ -11,6 +11,7 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPane
 from wagtail.core.models import Orderable, Page
 from wagtail.search import index
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail_localize.fields import TranslatableField, SynchronizedField
 from wagtail_localize.models import TranslatablePageMixin
 from wagtail_localize.admin.regions.components import register_region_component
 
@@ -105,11 +106,12 @@ class LocationsIndexPage(TranslatablePageMixin, Page):
     subpage_types = ['LocationPage']
 
     translatable_fields = [
-        'title',
-        'slug',
-        'seo_title',
-        'search_description',
-        'introduction',
+        TranslatableField('title'),
+        TranslatableField('slug'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        TranslatableField('introduction'),
+        SynchronizedField('image'),
     ]
 
     # Allows children of this indexpage to be accessible via the indexpage
@@ -184,12 +186,16 @@ class LocationPage(TranslatablePageMixin, Page):
     ]
 
     translatable_fields = [
-        'title',
-        'slug',
-        'seo_title',
-        'search_description',
-        'introduction',
-        'body',
+        TranslatableField('title'),
+        TranslatableField('slug'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        TranslatableField('introduction'),
+        SynchronizedField('image'),
+        TranslatableField('body'),
+        SynchronizedField('address'),
+        SynchronizedField('lat_long'),
+        SynchronizedField('hours_of_operation'),
     ]
 
     def __str__(self):

@@ -12,6 +12,7 @@ from wagtail.core.models import Page
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail_localize.fields import TranslatableField, SynchronizedField
 from wagtail_localize.models import TranslatableMixin, TranslatablePageMixin
 
 from bakerydemo.base.blocks import BaseStreamBlock
@@ -32,7 +33,7 @@ class Country(TranslatableMixin, models.Model):
     title = models.CharField(max_length=100)
 
     translatable_fields = [
-        'title',
+        TranslatableField('title'),
     ]
 
     def __str__(self):
@@ -58,7 +59,7 @@ class BreadIngredient(TranslatableMixin, models.Model):
     ]
 
     translatable_fields = [
-        'name',
+        TranslatableField('name'),
     ]
 
     def __str__(self):
@@ -86,7 +87,7 @@ class BreadType(TranslatableMixin, models.Model):
     ]
 
     translatable_fields = [
-        'title',
+        TranslatableField('title'),
     ]
 
     def __str__(self):
@@ -160,15 +161,16 @@ class BreadPage(TranslatablePageMixin, Page):
     parent_page_types = ['BreadsIndexPage']
 
     translatable_fields = [
-        'title',
-        'slug',
-        'seo_title',
-        'search_description',
-        'introduction',
-        'body',
-        'origin',
-        'bread_type',
-        'ingredients',
+        TranslatableField('title'),
+        TranslatableField('slug'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        TranslatableField('introduction'),
+        SynchronizedField('image'),
+        TranslatableField('body'),
+        TranslatableField('origin'),
+        TranslatableField('bread_type'),
+        TranslatableField('ingredients'),
     ]
 
 
@@ -203,11 +205,12 @@ class BreadsIndexPage(TranslatablePageMixin, Page):
     subpage_types = ['BreadPage']
 
     translatable_fields = [
-        'title',
-        'slug',
-        'seo_title',
-        'search_description',
-        'introduction',
+        TranslatableField('title'),
+        TranslatableField('slug'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        TranslatableField('introduction'),
+        SynchronizedField('image'),
     ]
 
     # Returns a queryset of BreadPage objects that are live, that are direct

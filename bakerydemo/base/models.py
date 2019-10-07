@@ -19,6 +19,7 @@ from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from wagtail_localize.fields import TranslatableField, SynchronizedField
 from wagtail_localize.models import TranslatableMixin, TranslatablePageMixin, TranslatablePageRoutingMixin
 
 from .blocks import BaseStreamBlock
@@ -67,7 +68,10 @@ class People(index.Indexed, TranslatableMixin, ClusterableModel):
     ]
 
     translatable_fields = [
-        'job_title',
+        SynchronizedField('first_name'),
+        SynchronizedField('last_name'),
+        TranslatableField('job_title'),
+        SynchronizedField('image'),
     ]
 
     @property
@@ -102,7 +106,7 @@ class FooterText(TranslatableMixin, models.Model):
     ]
 
     translatable_fields = [
-        'body',
+        TranslatableField('body'),
     ]
 
     def __str__(self):
@@ -140,12 +144,13 @@ class StandardPage(TranslatablePageMixin, Page):
     ]
 
     translatable_fields = [
-        'title',
-        'slug',
-        'seo_title',
-        'search_description',
-        'introduction',
-        'body',
+        TranslatableField('title'),
+        TranslatableField('slug'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        TranslatableField('introduction'),
+        SynchronizedField('image'),
+        TranslatableField('body'),
     ]
 
 
@@ -302,18 +307,23 @@ class HomePage(TranslatablePageMixin, TranslatablePageRoutingMixin, Page):
     ]
 
     translatable_fields = [
-        'title',
-        'slug',
-        'seo_title',
-        'search_description',
-        'hero_text',
-        'hero_cta',
-        'body',
-        'promo_title',
-        'promo_text',
-        'featured_section_1_title',
-        'featured_section_2_title',
-        'featured_section_3_title',
+        TranslatableField('title'),
+        TranslatableField('slug'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        TranslatableField('hero_text'),
+        TranslatableField('hero_cta'),
+        SynchronizedField('hero_cta_link'),
+        TranslatableField('body'),
+        SynchronizedField('promo_image'),
+        TranslatableField('promo_title'),
+        TranslatableField('promo_text'),
+        TranslatableField('featured_section_1_title'),
+        SynchronizedField('featured_section_1'),
+        TranslatableField('featured_section_2_title'),
+        SynchronizedField('featured_section_2'),
+        TranslatableField('featured_section_3_title'),
+        SynchronizedField('featured_section_3'),
     ]
 
     def __str__(self):
@@ -364,12 +374,14 @@ class GalleryPage(TranslatablePageMixin, Page):
     subpage_types = []
 
     translatable_fields = [
-        'title',
-        'slug',
-        'seo_title',
-        'search_description',
-        'introduction',
-        'body',
+        TranslatableField('title'),
+        TranslatableField('slug'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        TranslatableField('introduction'),
+        SynchronizedField('image'),
+        TranslatableField('body'),
+        SynchronizedField('collection'),
     ]
 
 
@@ -384,7 +396,14 @@ class FormField(TranslatableMixin, AbstractFormField):
     """
     page = ParentalKey('FormPage', related_name='form_fields', on_delete=models.CASCADE)
 
-    translatable_fields = ['label', 'help_text']
+    translatable_fields = [
+        TranslatableField('label'),
+        SynchronizedField('field_type'),
+        SynchronizedField('required'),
+        TranslatableField('choices'),
+        TranslatableField('default_value'),
+        TranslatableField('help_text'),
+    ]
 
 
 class FormPage(TranslatablePageMixin, AbstractEmailForm):
@@ -415,11 +434,12 @@ class FormPage(TranslatablePageMixin, AbstractEmailForm):
     ]
 
     translatable_fields = [
-        'title',
-        'slug',
-        'seo_title',
-        'search_description',
-        'body',
-        'thank_you_text',
-        'form_fields',
+        TranslatableField('title'),
+        TranslatableField('slug'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        SynchronizedField('image'),
+        TranslatableField('body'),
+        TranslatableField('thank_you_text'),
+        TranslatableField('form_fields'),
     ]
