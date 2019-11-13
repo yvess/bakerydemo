@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailimages_tags wagtailcore_tags %}
+{% load wagtailimages_tags wagtailcore_tags navigation_tags %}
 
 {% block content %}
 <div class="homepage">
@@ -38,20 +38,21 @@
 
         <div class="col-sm-6 col-sm-offset-1 feature-1">
             {% if page.featured_section_1 %}
+            {% get_local_version page.featured_section_1 as local %}
             <h2>{{ page.featured_section_1_title }}</h2>
                 <div class="featured-children">
-                    {% for childpage in page.featured_section_1.specific.children|slice:"4" %}
+                    {% for childpage in local.specific.children|slice:"4" %}
                         <li>
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <a href="{{childpage.url}}">
+                                    <a href="{% pageurl childpage %}">
                                         <figure>
                                             {% image childpage.image fill-180x140-c100 %}
                                         </figure>
                                     </a>
                                 </div>
                                 <div class="col-xs-8">
-                                    <h3><a href="{{childpage.url}}">{{childpage.title}}</a></h3>
+                                    <h3><a href="{% pageurl childpage %}">{{childpage.title}}</a></h3>
                                 </div>
                             </div>
                         </li>
@@ -78,17 +79,18 @@
     <div class="row">
         <div class="col-md-12 feature-2">
             {% if page.featured_section_2 %}
+            {% get_local_version page.featured_section_2 as local %}
             <h2>{{ page.featured_section_2_title }}</h2>
                 <div class="featured-children row feature-2-row">
-                    {% for childpage in page.featured_section_2.specific.children|slice:"3" %}
+                    {% for childpage in local.specific.children|slice:"3" %}
                         <li class="col-sm-4 feature-2-item">
-                            <a href="{{childpage.url}}">
+                            <a href="{% pageurl childpage %}">
                                 <figure>
                                     {% image childpage.image fill-430x210-c100 %}
                                 </figure>
                             </a>
                             <div class="feature-2-text">
-                                <h3><a href="{{childpage.url}}">{{childpage.title}}</a></h3>
+                                <h3><a href="{% pageurl childpage %}">{{childpage.title}}</a></h3>
                                 <p>{{ childpage.introduction|truncatewords:15 }}</p>
                             </div>
                         </li>
@@ -103,11 +105,12 @@
     <div class="row">
         <div class="col-md-12 feature-3">
             {% if page.featured_section_3 %}
+            {% get_local_version page.featured_section_2 as local %}
             <h2>{{ page.featured_section_3_title }}</h2>
                 <div class="featured-children row">
-                    {% for childpage in page.featured_section_3.specific.children|slice:"6" %}
+                    {% for childpage in local.specific.children|slice:"6" %}
                         <li class="col-md-4">
-                            <a href="{{childpage.url}}">
+                            <a href="{% pageurl childpage %}">
                                 <figure>
                                     {% image childpage.image fill-430x254-c100 %}
                                 </figure>

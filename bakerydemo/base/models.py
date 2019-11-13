@@ -145,7 +145,6 @@ class StandardPage(TranslatablePageMixin, Page):
 
     translatable_fields = [
         TranslatableField('title'),
-        TranslatableField('slug'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
         TranslatableField('introduction'),
@@ -308,7 +307,6 @@ class HomePage(TranslatablePageMixin, TranslatablePageRoutingMixin, Page):
 
     translatable_fields = [
         TranslatableField('title'),
-        TranslatableField('slug'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
         TranslatableField('hero_text'),
@@ -375,7 +373,6 @@ class GalleryPage(TranslatablePageMixin, Page):
 
     translatable_fields = [
         TranslatableField('title'),
-        TranslatableField('slug'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
         TranslatableField('introduction'),
@@ -435,7 +432,6 @@ class FormPage(TranslatablePageMixin, AbstractEmailForm):
 
     translatable_fields = [
         TranslatableField('title'),
-        TranslatableField('slug'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
         SynchronizedField('image'),
@@ -443,3 +439,27 @@ class FormPage(TranslatablePageMixin, AbstractEmailForm):
         TranslatableField('thank_you_text'),
         TranslatableField('form_fields'),
     ]
+
+
+from wagtail_localize.models import Locale
+
+old_get_url = Page.get_url
+
+def get_url(page, request, current_site=None):
+    if issubclass(page.specific_class, TranslatablePageMixin):
+        return old_get_url(page.specific.get_translation(Locale.objects.default()), request, current_site=current_site)
+
+    return old_get_url(page, request, current_site=current_site)
+
+Page.get_url = get_url
+
+
+old_get_full_url = Page.get_full_url
+
+def get_full_url(page, request):
+    if issubclass(page.specific_class, TranslatablePageMixin):
+        return old_get_full_url(page.specific.get_translation(Locale.objects.default()), request)
+
+    return old_get_full_url(page, request)
+
+Page.get_full_url = get_full_url

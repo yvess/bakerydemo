@@ -107,7 +107,6 @@ class LocationsIndexPage(TranslatablePageMixin, Page):
 
     translatable_fields = [
         TranslatableField('title'),
-        TranslatableField('slug'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
         TranslatableField('introduction'),
@@ -187,7 +186,6 @@ class LocationPage(TranslatablePageMixin, Page):
 
     translatable_fields = [
         TranslatableField('title'),
-        TranslatableField('slug'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
         TranslatableField('introduction'),
@@ -195,7 +193,7 @@ class LocationPage(TranslatablePageMixin, Page):
         TranslatableField('body'),
         SynchronizedField('address'),
         SynchronizedField('lat_long'),
-        SynchronizedField('hours_of_operation'),
+        #SynchronizedField('hours_of_operation'),
     ]
 
     def __str__(self):

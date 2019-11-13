@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'wagtail_localize.admin.workflow',
     'wagtail_localize.translation_memory',
     'wagtail_localize.translation_engines.google_translate',
+    'wagtail_localize.translation_engines.pofile',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -190,4 +191,5 @@ WAGTAIL_SITE_MODEL = 'wagtail_localize_sites.Site'
 LANGUAGES = [
     ('en', "English"),
     ('fr', "French"),
+    ('ja', "Japanese"),
 ]

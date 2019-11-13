@@ -14,7 +14,9 @@ def get_site_root(context):
     # This returns a core.Page. The main menu needs to have the site.root_page
     # defined else will return an object attribute error ('str' object has no
     # attribute 'get_children')
-    return context['request'].site.root_page
+    home_page = context['request'].site.root_page
+    translated_homepage = home_page.specific.get_translation_for_request(context['request'])
+    return translated_homepage or home_page
 
 
 def has_menu_children(page):
@@ -100,3 +102,42 @@ def get_footer_text(context):
     return {
         'footer_text': footer_text,
     }
+
+from django.utils import translation
+from wagtail_localize.models import Locale, TranslatablePageMixin
+
+@register.simple_tag(takes_context=True)
+def get_local_version(context, page):
+    if issubclass(page.specific_class, TranslatablePageMixin):
+        language_code = translation.get_supported_language_variant(
+            context['request'].LANGUAGE_CODE
+        )
+
+        try:
+            locale = Locale.objects.get(
+                language__code=language_code, region__is_default=True
+            )
+            return page.specific.get_translation_or_none(locale) or page
+
+        except Locale.DoesNotExist:
+            return
+
+        except page.specific_class.DoesNotExist:
+            return
+
+    return page
+
+
+@register.simple_tag(takes_context=True)
+def get_translations(context):
+    page = context['page']
+
+    if isinstance(page, TranslatablePageMixin):
+        for translated_page in context['page'].get_translations():
+            language = translated_page.locale.language
+            with translation.override(language.code):
+                yield language, page.get_url(context['request'])
+
+        return context['page'].get_translations()
+
+    return []

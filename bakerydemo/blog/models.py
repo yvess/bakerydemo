@@ -100,7 +100,6 @@ class BlogPage(TranslatablePageMixin, Page):
 
     translatable_fields = [
         TranslatableField('title'),
-        TranslatableField('slug'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
         TranslatableField('subtitle'),
@@ -138,7 +137,7 @@ class BlogPage(TranslatablePageMixin, Page):
                 self.get_parent().url,
                 'tags',
                 tag.slug
-            ])
+            ] if s is not None)
         return tags
 
     # Specifies parent to BlogPage as being BlogIndexPages
@@ -177,7 +176,6 @@ class BlogIndexPage(RoutablePageMixin, TranslatablePageMixin, Page):
 
     translatable_fields = [
         TranslatableField('title'),
-        TranslatableField('slug'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
         TranslatableField('introduction'),

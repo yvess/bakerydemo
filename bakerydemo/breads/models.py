@@ -162,7 +162,6 @@ class BreadPage(TranslatablePageMixin, Page):
 
     translatable_fields = [
         TranslatableField('title'),
-        TranslatableField('slug'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
         TranslatableField('introduction'),
@@ -206,7 +205,6 @@ class BreadsIndexPage(TranslatablePageMixin, Page):
 
     translatable_fields = [
         TranslatableField('title'),
-        TranslatableField('slug'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
         TranslatableField('introduction'),
