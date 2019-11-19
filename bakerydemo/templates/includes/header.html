@@ -19,10 +19,25 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"></path></svg>
                     </a>
 
-                    {% get_translations as translations %}
-                    {% for language, url in translations %}
-                        <a href="{{ url }}">{{ language.get_display_name }}</a>
-                    {% endfor %}
+                    {% if page %}
+                        {% get_page_translations as translations %}
+                        {% for language, url in translations %}
+                            {% get_language_info for language.code as lang %}
+                            <a href="{{ url }}">{{ lang.name_local }}</a>
+                        {% endfor %}
+                    {% else %}
+                        {% get_current_language as current_language_code %}
+                        {% get_available_languages as languages %}
+                        {% for language_code, language_name in languages %}
+                            {% if language_code != current_language_code %}
+                                {% get_language_info for language_code as lang %}
+                                {% language language_code %}
+                                    {# HACK: Assuming only the search page needs this #}
+                                    <a href="{% url 'search' %}?{{ request.GET.urlencode }}">{{ lang.name_local }}</a>
+                                {% endlanguage %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </form>
 
                 {% block main_navigation %}

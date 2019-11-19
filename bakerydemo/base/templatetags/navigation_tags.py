@@ -129,7 +129,7 @@ def get_local_version(context, page):
 
 
 @register.simple_tag(takes_context=True)
-def get_translations(context):
+def get_page_translations(context):
     page = context['page']
 
     if isinstance(page, TranslatablePageMixin):
