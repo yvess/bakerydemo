@@ -62,9 +62,9 @@ INSTALLED_APPS = [
     'wagtail_localize',
     'wagtail_localize.admin.regions',
     'wagtail_localize.admin.workflow',
-    'wagtail_localize.translation_memory',
-    'wagtail_localize.translation_engines.google_translate',
-    'wagtail_localize.translation_engines.pofile',
+    'wagtail_localize.translation',
+    'wagtail_localize.translation.engines.google_translate',
+    'wagtail_localize.translation.engines.pofile',
 
     'django.contrib.admin',
     'django.contrib.auth',
