@@ -1,11 +1,8 @@
-Wagtail demo project
-=======================
+Wagtail-localize demo project
+=============================
 
-This is a demonstration project for the amazing [Wagtail CMS](https://github.com/wagtail/wagtail).
+This is a demonstration project for wagtail-localize, using Bakerydemo.
 
-The demo site is designed to provide examples of common features and recipes to introduce you to Wagtail development. Beyond the code, it will also let you explore the admin / editorial interface of the CMS.
-
-Note we do _not_ recommend using this project to start your own site - the demo is intended to be a springboard to get you started. Feel free to copy code from the demo into your own project.
 
 **Document contents**
 
@@ -35,8 +32,8 @@ Setup with Vagrant
 Once you've installed the necessary dependencies run the following commands:
 
 ```bash
-git clone https://github.com/wagtail/bakerydemo.git
-cd bakerydemo
+git clone git@git.torchbox.com:karl/wagtail-i18n-poc.git
+cd wagtail-i18n-poc
 vagrant up
 vagrant ssh
 # then, within the SSH session:
