@@ -21,8 +21,8 @@
 
                     {% if page %}
                         {% get_page_translations as translations %}
-                        {% for language, url in translations %}
-                            {% get_language_info for language.code as lang %}
+                        {% for locale, url in translations %}
+                            {% get_language_info for locale.language_code as lang %}
                             <a href="{{ url }}">{{ lang.name_local }}</a>
                         {% endfor %}
                     {% else %}
