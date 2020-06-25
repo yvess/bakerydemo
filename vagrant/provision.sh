@@ -22,11 +22,8 @@ su - $DEV_USER -c "echo $PROJECT_DIR > $VIRTUALENV_DIR/.project"
 su - $DEV_USER -c "$PIP install --upgrade pip"
 
 # Install PIP requirements
-su - $DEV_USER -c "$PIP install -r $PROJECT_DIR/requirements/base.txt"
+su - $DEV_USER -c "cd $PROJECT_DIR && $PIP install -r requirements/base.txt"
 
-
-# Set execute permissions on manage.py as they get lost if we build from a zip file
-chmod a+x $PROJECT_DIR/manage.py
 
 # copy local settings file
 cp $PROJECT_DIR/bakerydemo/settings/local.py.example $PROJECT_DIR/bakerydemo/settings/local.py
