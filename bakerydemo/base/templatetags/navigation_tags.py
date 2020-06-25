@@ -124,7 +124,7 @@ def get_local_version(context, page):
 
         try:
             locale = Locale.objects.get(
-                language__code=language_code, region__is_default=True
+                language_code=language_code
             )
             return page.specific.get_translation_or_none(locale) or page
 
@@ -143,7 +143,6 @@ def get_page_translations(context):
 
     if isinstance(page, TranslatablePageMixin):
         for translated_page in context["page"].get_translations():
-            # language = translated_page.locale.language
             locale = translated_page.locale
             with translation.override(locale.language_code):
                 yield locale, page.get_url(context["request"])

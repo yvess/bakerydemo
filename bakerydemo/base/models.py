@@ -20,7 +20,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from wagtail_localize.fields import TranslatableField, SynchronizedField
-from wagtail_localize.models import TranslatableMixin, TranslatablePageMixin, TranslatablePageRoutingMixin
+from wagtail_localize.models import TranslatableMixin, TranslatablePageMixin
 
 from .blocks import BaseStreamBlock
 
@@ -153,7 +153,7 @@ class StandardPage(TranslatablePageMixin, Page):
     ]
 
 
-class HomePage(TranslatablePageMixin, TranslatablePageRoutingMixin, Page):
+class HomePage(TranslatablePageMixin, Page):
     """
     The Home Page. This looks slightly more complicated than it is. You can
     see if you visit your site and edit the homepage that it is split between
