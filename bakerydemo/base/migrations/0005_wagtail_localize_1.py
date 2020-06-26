@@ -8,7 +8,7 @@ import wagtail_localize.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtail_localize', '0002_initial_data'),
+        ('wagtail_localize', '0006_delete_language_model'),
         ('base', '0004_auto_20180522_1856'),
     ]
 
