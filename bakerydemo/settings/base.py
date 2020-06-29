@@ -58,8 +58,7 @@ INSTALLED_APPS = [
     "wagtail_localize",
     "wagtail_localize.workflow",
     "wagtail_localize.translation",
-    "wagtail_localize.translation.engines.google_translate",
-    "wagtail_localize.translation.engines.pofile",
+    "wagtail_localize_pontoon",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -181,3 +180,7 @@ LANGUAGES = [
 LOCALE_PATHS = [
     os.path.join(PROJECT_DIR, "locale"),
 ]
+
+WAGTAILLOCALIZE_MACHINE_TRANSLATOR = {
+    'CLASS': 'wagtail_localize.translation.machine_translators.dummy.DummyTranslator',
+}
