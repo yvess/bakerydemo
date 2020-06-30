@@ -1,12 +1,9 @@
 FROM node:14 as frontend
 
-RUN mkdir /code/
-WORKDIR /code/
-
 # Compile static files
-COPY ./wagtail ./wagtail
-RUN cd ./wagtail && npm install --no-optional --no-audit --progress=false
-RUN cd ./wagtail && npm run dist
+COPY ./wagtail /wagtail
+RUN cd /wagtail && npm install --no-optional --no-audit --progress=false
+RUN cd /wagtail && npm run dist
 
 # We use Debian images because they are considered more stable than the alpine
 # ones becase they use a different C compiler. Debian images also come with
@@ -51,6 +48,7 @@ EXPOSE 8000
 
 # Copy application code.
 COPY --chown=bakerydemo . .
+COPY --chown=bakerydemo --from=frontend /wagtail ./wagtail
 
 # Install your app's Python requirements.
 RUN pip install -r requirements/production.txt
