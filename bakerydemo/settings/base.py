@@ -175,6 +175,8 @@ LANGUAGES = [
     ("en", "English"),
     ("fr", "French"),
     ("ja", "Japanese"),
+    ("es-ES", "Spanish (Spain)"),
+    ("es-MX", "Spanish (Mexico)"),
 ]
 
 LOCALE_PATHS = [
@@ -182,5 +184,5 @@ LOCALE_PATHS = [
 ]
 
 WAGTAILLOCALIZE_MACHINE_TRANSLATOR = {
-    'CLASS': 'wagtail_localize.translation.machine_translators.dummy.DummyTranslator',
+    'CLASS': 'wagtail_localize.translation.machine_translators.google_translate.GoogleTranslateTranslator',
 }
