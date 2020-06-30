@@ -75,8 +75,5 @@ RUN mkdir -p /code/bakerydemo/media/images && chown -R 1000:2000 /code/bakerydem
 # mark the destination for images as a volume
 VOLUME ["/code/bakerydemo/media/images/"]
 
-# start uWSGI, using a wrapper script to allow us to easily add more commands to container startup:
-ENTRYPOINT ["/code/docker-entrypoint.sh"]
-
 # Start uWSGI
 CMD ["/venv/bin/uwsgi", "--show-config"]
