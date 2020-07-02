@@ -15,6 +15,8 @@ ARG POETRY_HOME=/opt/poetry
 ARG POETRY_VERSION=1.0.3
 
 RUN useradd bakerydemo
+RUN mkdir -p /home/bakerydemo
+RUN chown bakerydemo /home/bakerydemo
 
 WORKDIR /app
 
@@ -62,6 +64,13 @@ RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 # containers as root either.
 # https://devcenter.heroku.com/articles/container-registry-and-runtime#dockerfile-commands-and-runtime
 USER bakerydemo
+
+# Copy SSH private key to file, if set
+# This is used for talking to GitHub over an SSH connection
+ARG SSH_PRIVATE_KEY
+RUN mkdir $HOME/.ssh
+RUN if [ $SSH_PRIVATE_KEY ]; then echo $SSH_PRIVATE_KEY  > $HOME/.ssh/id_rsa; else echo "Private key not set"; fi
+RUN cp ./sshconfig $HOME/.ssh/config
 
 # Run the WSGI server. It reads GUNICORN_CMD_ARGS, PORT and WEB_CONCURRENCY
 # environment variable hence we don't specify a lot options below.
