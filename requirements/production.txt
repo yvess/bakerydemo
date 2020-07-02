@@ -7,10 +7,9 @@ dj-database-url==0.4.1
 gunicorn==20.0.4
 psycopg2==2.8.5
 whitenoise==3.2.2
-boto==2.45.0
-django-storages==1.6.5
+boto3==1.14.14
+django-storages==1.9.1
 # For retrieving credentials and signing requests to Elasticsearch
-botocore==1.12.33
 aws-requests-auth==0.4.0
 django-redis==4.8.0
 django_cache_url==2.0.0
