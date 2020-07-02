@@ -1,5 +1,4 @@
-#!/bin/sh
-set -e
+#!/bin/sh -e
 
 # Copy SSH private key to file, if set
 # This is used for talking to GitHub over an SSH connection
