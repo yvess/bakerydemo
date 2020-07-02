@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     "taggit",
     "wagtailfontawesome",
     "wagtail_localize",
-    "wagtail_localize.workflow",
     "wagtail_localize.translation",
     "wagtail_localize_pontoon",
     "django.contrib.admin",
@@ -178,6 +177,13 @@ LANGUAGES = [
     ("es-ES", "Spanish (Spain)"),
     ("es-MX", "Spanish (Mexico)"),
 ]
+
+WAGTAILLOCALIZE_LANGUAGES = {
+    ("en", "English"),
+    ("fr", "French"),
+    ("ja", "Japanese"),
+    ("es", "Spanish"),
+}
 
 LOCALE_PATHS = [
     os.path.join(PROJECT_DIR, "locale"),
