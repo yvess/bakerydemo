@@ -69,7 +69,6 @@ USER bakerydemo
 # Copy SSH private key to file, if set
 # This is used for talking to GitHub over an SSH connection
 ARG SSH_PRIVATE_KEY
-RUN mkdir $HOME/.ssh
 RUN echo $SSH_PRIVATE_KEY | base64 --decode > $HOME/.ssh/id_rsa
 RUN ssh -oStrictHostKeyChecking=no -T github.com 2>&1 | indent
 
