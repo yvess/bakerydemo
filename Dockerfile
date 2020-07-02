@@ -70,7 +70,7 @@ USER bakerydemo
 ARG SSH_PRIVATE_KEY
 RUN mkdir $HOME/.ssh
 RUN if [ $SSH_PRIVATE_KEY ]; then echo $SSH_PRIVATE_KEY  > $HOME/.ssh/id_rsa; else echo "Private key not set"; fi
-RUN cp /app/sshconfig $HOME/.ssh/config
+COPY ./etc/sshconfig $HOME/.ssh/
 
 # Run the WSGI server. It reads GUNICORN_CMD_ARGS, PORT and WEB_CONCURRENCY
 # environment variable hence we don't specify a lot options below.
