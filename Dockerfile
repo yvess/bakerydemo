@@ -66,11 +66,7 @@ RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 # https://devcenter.heroku.com/articles/container-registry-and-runtime#dockerfile-commands-and-runtime
 USER bakerydemo
 
-# Copy SSH private key to file, if set
-# This is used for talking to GitHub over an SSH connection
-ARG SSH_PRIVATE_KEY
-RUN echo $SSH_PRIVATE_KEY | base64 --decode > $HOME/.ssh/id_rsa
-#RUN ssh -oStrictHostKeyChecking=no -T github.com
+ENTRYPOINT ['docker-entrypoint.sh']
 
 # Run the WSGI server. It reads GUNICORN_CMD_ARGS, PORT and WEB_CONCURRENCY
 # environment variable hence we don't specify a lot options below.
