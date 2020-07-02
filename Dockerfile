@@ -42,7 +42,6 @@ ENV PYTHONUNBUFFERED=1 \
     DJANGO_SETTINGS_MODULE=bakerydemo.settings.production \
     PORT=8000 \
     WEB_CONCURRENCY=3 \
-    HOME=/app \
     GUNICORN_CMD_ARGS="-c gunicorn-conf.py --max-requests 1200 --access-logfile - --timeout 25"
 
 # Port exposed by this container. Should default to the port used by your WSGI
@@ -66,7 +65,7 @@ RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 # https://devcenter.heroku.com/articles/container-registry-and-runtime#dockerfile-commands-and-runtime
 USER bakerydemo
 
-ENTRYPOINT ['/app/docker-entrypoint.sh']
+ENTRYPOINT /app/docker-entrypoint.sh
 
 # Run the WSGI server. It reads GUNICORN_CMD_ARGS, PORT and WEB_CONCURRENCY
 # environment variable hence we don't specify a lot options below.
