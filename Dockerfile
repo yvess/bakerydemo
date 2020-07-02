@@ -70,7 +70,7 @@ USER bakerydemo
 # This is used for talking to GitHub over an SSH connection
 ARG SSH_PRIVATE_KEY
 RUN echo $SSH_PRIVATE_KEY | base64 --decode > $HOME/.ssh/id_rsa
-RUN ssh -oStrictHostKeyChecking=no -T github.com 2>&1 | indent
+RUN ssh -oStrictHostKeyChecking=no -T github.com
 
 # Run the WSGI server. It reads GUNICORN_CMD_ARGS, PORT and WEB_CONCURRENCY
 # environment variable hence we don't specify a lot options below.
