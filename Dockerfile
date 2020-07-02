@@ -42,6 +42,7 @@ ENV PYTHONUNBUFFERED=1 \
     DJANGO_SETTINGS_MODULE=bakerydemo.settings.production \
     PORT=8000 \
     WEB_CONCURRENCY=3 \
+    HOME=/app \
     GUNICORN_CMD_ARGS="-c gunicorn-conf.py --max-requests 1200 --access-logfile - --timeout 25"
 
 # Port exposed by this container. Should default to the port used by your WSGI
@@ -68,7 +69,8 @@ USER bakerydemo
 # Copy SSH private key to file, if set
 # This is used for talking to GitHub over an SSH connection
 ARG SSH_PRIVATE_KEY
-RUN if [ $SSH_PRIVATE_KEY ]; then echo $SSH_PRIVATE_KEY  > /app/.ssh/id_rsa; else echo "Private key not set"; fi
+RUN echo $SSH_PRIVATE_KEY | base64 --decode > $HOME/id_rsa
+RUN ssh -oStrictHostKeyChecking=no github.com
 
 # Run the WSGI server. It reads GUNICORN_CMD_ARGS, PORT and WEB_CONCURRENCY
 # environment variable hence we don't specify a lot options below.
