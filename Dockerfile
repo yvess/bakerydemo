@@ -66,7 +66,7 @@ RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 # https://devcenter.heroku.com/articles/container-registry-and-runtime#dockerfile-commands-and-runtime
 USER bakerydemo
 
-ENTRYPOINT ['docker-entrypoint.sh']
+ENTRYPOINT ['/app/docker-entrypoint.sh']
 
 # Run the WSGI server. It reads GUNICORN_CMD_ARGS, PORT and WEB_CONCURRENCY
 # environment variable hence we don't specify a lot options below.
