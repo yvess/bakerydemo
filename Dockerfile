@@ -68,9 +68,7 @@ USER bakerydemo
 # Copy SSH private key to file, if set
 # This is used for talking to GitHub over an SSH connection
 ARG SSH_PRIVATE_KEY
-RUN mkdir $HOME/.ssh
-RUN if [ $SSH_PRIVATE_KEY ]; then echo $SSH_PRIVATE_KEY  > $HOME/.ssh/id_rsa; else echo "Private key not set"; fi
-COPY ./etc/sshconfig $HOME/.ssh/
+RUN if [ $SSH_PRIVATE_KEY ]; then echo $SSH_PRIVATE_KEY  > /app/.ssh/id_rsa; else echo "Private key not set"; fi
 
 # Run the WSGI server. It reads GUNICORN_CMD_ARGS, PORT and WEB_CONCURRENCY
 # environment variable hence we don't specify a lot options below.
