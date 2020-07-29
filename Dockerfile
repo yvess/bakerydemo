@@ -55,6 +55,7 @@ EXPOSE 8000
 # Copy application code.
 COPY --chown=bakerydemo . .
 COPY --chown=bakerydemo --from=frontend /wagtail ./wagtail
+COPY --chown=bakerydemo --from=frontend /wagtail-localize ./wagtail-localize
 
 # Install your app's Python requirements.
 RUN pip install -r requirements/production.txt
