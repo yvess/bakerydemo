@@ -5,6 +5,9 @@ COPY ./wagtail /wagtail
 RUN cd /wagtail && npm install --no-optional --no-audit --progress=false
 RUN cd /wagtail && npm run dist
 
+COPY ./wagtail-localize /wagtail-localize
+RUN cd /wagtail-localize && make build
+
 # We use Debian images because they are considered more stable than the alpine
 # ones becase they use a different C compiler. Debian images also come with
 # all useful packages required for image manipulation out of the box. They
