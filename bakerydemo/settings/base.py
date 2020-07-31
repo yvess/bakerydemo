@@ -181,7 +181,7 @@ WAGTAILSEARCH_BACKENDS = {
 # Wagtail settings
 WAGTAIL_SITE_NAME = "bakerydemo"
 
-LANGUAGES = [
+LANGUAGES = WAGTAIL_CONTENT_LANGUAGES = [
     ('en', "English"),
     ('fr', "French"),
     ('es', "Spanish"),

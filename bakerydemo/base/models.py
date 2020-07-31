@@ -88,6 +88,9 @@ class People(index.Indexed, TranslatableMixin, ClusterableModel):
     class Meta:
         verbose_name = 'Person'
         verbose_name_plural = 'People'
+        unique_together = [
+            ('translation_key', 'locale'),
+        ]
 
 
 @register_snippet
@@ -113,6 +116,9 @@ class FooterText(TranslatableMixin, models.Model):
 
     class Meta:
         verbose_name_plural = 'Footer Text'
+        unique_together = [
+            ('translation_key', 'locale'),
+        ]
 
 
 class StandardPage(Page):
