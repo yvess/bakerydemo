@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'bakerydemo.search',
 
     'wagtail_localize',
+    'wagtail_localize.git',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
