@@ -7,3 +7,6 @@
 [submodule "wagtail-localize-pontoon"]
 	path = wagtail-localize-pontoon
 	url = https://github.com/wagtail/wagtail-localize-pontoon.git
+[submodule "django-modelcluster"]
+	path = django-modelcluster
+	url = https://github.com/kaedroho/django-modelcluster.git
