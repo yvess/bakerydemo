@@ -454,4 +454,7 @@ class FormPage(AbstractEmailForm):
         TranslatableField('body'),
         TranslatableField('thank_you_text'),
         TranslatableField('form_fields'),
+        SynchronizedField('from_address'),
+        SynchronizedField('to_address'),
+        TranslatableField('subject'),
     ]
