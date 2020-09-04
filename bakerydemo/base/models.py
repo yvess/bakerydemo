@@ -16,6 +16,7 @@ from wagtail.admin.edit_handlers import (
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Collection, Page, TranslatableMixin
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
@@ -279,6 +280,14 @@ class HomePage(Page):
         verbose_name='Featured section 3'
     )
 
+    document = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             ImageChooserPanel('image'),
@@ -307,7 +316,8 @@ class HomePage(Page):
                 FieldPanel('featured_section_3_title'),
                 PageChooserPanel('featured_section_3'),
             ]),
-        ], heading="Featured homepage sections", classname="collapsible")
+        ], heading="Featured homepage sections", classname="collapsible"),
+        DocumentChooserPanel('document'),
     ]
 
     translatable_fields = [
@@ -327,6 +337,7 @@ class HomePage(Page):
         SynchronizedField('featured_section_2'),
         TranslatableField('featured_section_3_title'),
         SynchronizedField('featured_section_3'),
+        SynchronizedField('document'),
     ]
 
     def __str__(self):
