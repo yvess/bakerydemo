@@ -4,6 +4,3 @@
 [submodule "wagtail-localize"]
 	path = wagtail-localize
 	url = https://github.com/wagtail/wagtail-localize.git
-[submodule "django-modelcluster"]
-	path = django-modelcluster
-	url = https://github.com/wagtail/django-modelcluster.git
