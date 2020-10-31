@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'bakerydemo.search',
 
     'wagtail_localize',
-    'wagtail_localize.git',
+    'wagtail.shell',
 
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.forms',
@@ -84,6 +84,7 @@ MIDDLEWARE = [
 
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 
+    'wagtail.shell.middleware.WagtailShellMiddleware',
 ]
 
 ROOT_URLCONF = 'bakerydemo.urls'
