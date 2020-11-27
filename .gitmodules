@@ -4,3 +4,6 @@
 [submodule "wagtail-localize"]
 	path = wagtail-localize
 	url = https://github.com/wagtail/wagtail-localize.git
+[submodule "wagtail-shell"]
+	path = wagtail-shell
+	url = https://github.com/kaedroho/wagtail-shell.git
