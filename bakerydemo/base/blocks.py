@@ -1,7 +1,7 @@
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.blocks import (
-    CharBlock, ChoiceBlock, RichTextBlock, StreamBlock, StructBlock, TextBlock,
+    CharBlock, ChoiceBlock, RichTextBlock, StreamBlock, StructBlock, TextBlock, DecimalBlock
 )
 
 
@@ -48,6 +48,12 @@ class BlockQuote(StructBlock):
         icon = "fa-quote-left"
         template = "blocks/blockquote.html"
 
+class StructDecimalBlock(StructBlock):
+    text = TextBlock()
+    number = DecimalBlock(max_digits=4, decimal_places=2)
+
+    class Meta:
+        template = "blocks/struct_decimal_block.html"
 
 # StreamBlocks
 class BaseStreamBlock(StreamBlock):
@@ -65,3 +71,5 @@ class BaseStreamBlock(StreamBlock):
         help_text='Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
         icon="fa-s15",
         template="blocks/embed_block.html")
+    struct_decimal_block = StructDecimalBlock()
+
