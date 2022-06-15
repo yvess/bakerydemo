@@ -100,3 +100,6 @@ def get_footer_text(context):
     return {
         'footer_text': footer_text,
     }
+
+
+register.filter(name='type')(lambda v: type(v))
