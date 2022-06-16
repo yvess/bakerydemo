@@ -1,7 +1,7 @@
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.blocks import (
-    CharBlock, ChoiceBlock, RichTextBlock, StreamBlock, StructBlock, TextBlock, DecimalBlock
+    CharBlock, ChoiceBlock, RichTextBlock, StreamBlock, StructBlock, TextBlock, DecimalBlock, IntegerBlock
 )
 
 
@@ -50,7 +50,8 @@ class BlockQuote(StructBlock):
 
 class StructDecimalBlock(StructBlock):
     text = TextBlock()
-    number = DecimalBlock(max_digits=4, decimal_places=2)
+    decimal = DecimalBlock(max_digits=4, decimal_places=2)
+    integer = IntegerBlock()
 
     class Meta:
         template = "blocks/struct_decimal_block.html"

@@ -1,4 +1,5 @@
 {% load navigation_tags %}
 <hr>
-<span>{{ self.text }}</span>
-<span>{{ self.number }} (type: {{ self.number|type }})</span>
+<span>{{ self.text|type }}</span>
+<span>{{ self.decimal }} (type: {{ self.decimal|type }})</span>
+<span>{{ self.integer }} (type: {{ self.integer|type }})</span>
